@@ -32,6 +32,7 @@ COPY --from=builder /app/.next/standalone ./.next/standalone
 COPY --from=builder /app/.next/static ./.next/static
 COPY --from=builder /app/public ./public
 
+COPY --from=builder /app/.next/static ./.next/standalone/.next/static
 # Expose port
 EXPOSE 3000
 
