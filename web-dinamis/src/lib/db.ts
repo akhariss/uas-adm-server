@@ -1,8 +1,8 @@
 import mysql from "mysql2/promise";
 
 const pool = mysql.createPool({
-  // 🔥 SUDAH DIPERBAIKI: Jika .env kosong, default langsung nembak Docker MariaDB AWS
-  host: process.env.DB_HOST || "db-webdinamis",
+  // 🔥 GANTI JADI INI: Langsung menembak gateway utama Docker Host
+  host: process.env.DB_HOST || "host.docker.internal",
   port: Number(process.env.DB_PORT) || 3306,
   user: process.env.DB_USER || "userwebdinamis_nim",
   password: process.env.DB_PASSWORD || "O)xz6GWEwDOx1Ea9",
