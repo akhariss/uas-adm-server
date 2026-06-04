@@ -19,7 +19,7 @@ services:
     restart: always
 
   container-dinamis:
-    image: kenn1213/konfigura_uas_stat:latest
+    image: kenn1213/konfigura_uas:latest
     ports:
       - "3000:3000"
     restart: always
