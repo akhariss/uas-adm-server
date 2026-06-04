@@ -14,7 +14,7 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata = {
-  title: "Konfigura Corp",
+  title: "Konfigura Group",
   description:
     "Perusahaan terpadu di bidang teknologi, pertanian, pendidikan, dan pengembangan sosial.",
 };
