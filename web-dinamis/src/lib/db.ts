@@ -1,12 +1,12 @@
 import mysql from "mysql2/promise";
 
 const pool = mysql.createPool({
-  // 🔥 GANTI JADI INI: Langsung menembak gateway utama Docker Host
-  host: process.env.DB_HOST || "host.docker.internal",
+  // Murni membaca dari environment variable yang disediakan oleh Docker runtime
+  host: process.env.DB_HOST,
   port: Number(process.env.DB_PORT) || 3306,
-  user: process.env.DB_USER || "userwebdinamis_nim",
-  password: process.env.DB_PASSWORD || "O)xz6GWEwDOx1Ea9",
-  database: process.env.DB_NAME || "dbcompro_nim",
+  user: process.env.DB_USER,
+  password: process.env.DB_PASSWORD,
+  database: process.env.DB_NAME,
   waitForConnections: true,
   connectionLimit: 10,
   queueLimit: 0,

@@ -24,10 +24,12 @@ services:
     ports:
       - "3000:3000"
     environment:
+      # 🔥 DI SINI KITA MENYUAPI VARIABEL YANG DICARI NEXT.JS
+      DB_HOST: db-webdinamis
+      DB_PORT: 3306
       DB_USER: userwebdinamis_nim
       DB_PASSWORD: O)xz6GWEwDOx1Ea9
       DB_NAME: dbcompro_nim
-      DB_HOST: db-webdinamis
       NEXTAUTH_SECRET: ini-kata-kata-bebas-saja-32-karekter
       NEXTAUTH_URL: http://47.129.9.245:3000
     depends_on:
