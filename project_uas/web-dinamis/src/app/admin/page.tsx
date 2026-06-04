@@ -3,6 +3,8 @@ import StatsCard from "@/components/admin/StatsCard";
 import DataTable from "@/components/admin/DataTable";
 import { query } from "@/lib/db";
 
+export const dynamic = "force-dynamic";
+
 export default async function AdminDashboardPage() {
   const [ecosystemCountRow] = await query<{ count: number }>(
     "SELECT COUNT(*) AS count FROM ecosystems"
