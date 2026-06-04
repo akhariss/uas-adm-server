@@ -19,6 +19,7 @@ export default function Navbar() {
           >
             Konfigura Group
           </Link>
+          #ini dirubah jadi hidden md:flex karena di mobile ga muncul, cuma muncul di desktop
 
           <nav className="hidden md:flex items-center gap-8">
             {links.map((item) => (
