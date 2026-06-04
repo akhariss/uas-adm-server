@@ -1,0 +1,1823 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mohamad Firdaus - NIM</title>
+    <!-- SEO Meta Tags -->
+    <meta name="description"
+        content="Company Profile HIMAFOR (Himpunan Mahasiswa Informatika) yang visioner, inovatif, dan berorientasi pada masa depan teknologi. Wadah kolaborasi mahasiswa informatika unggulan.">
+    <meta name="keywords"
+        content="HIMAFOR, Himpunan Mahasiswa Informatika, Informatika, Computer Science, Company Profile HIMAFOR, Mahasiswa Informatika">
+    <meta name="author" content="HIMAFOR Developer Team">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <style>
+        /* Modern Design Tokens & Variables */
+        :root {
+            --bg-dark: #060913;
+            --bg-darker: #03050a;
+            --bg-card: rgba(13, 19, 39, 0.45);
+            --bg-card-hover: rgba(20, 29, 58, 0.7);
+            --primary: #00f0ff;
+            /* Electric Cyan */
+            --secondary: #a855f7;
+            /* Cyber Purple */
+            --accent: #ec4899;
+            /* Neon Pink */
+            --text-light: #f8fafc;
+            --text-muted: #94a3b8;
+            --border-glass: rgba(255, 255, 255, 0.06);
+            --border-active: rgba(0, 240, 255, 0.3);
+            --primary-glow: rgba(0, 240, 255, 0.15);
+            --secondary-glow: rgba(168, 85, 247, 0.15);
+            --font-main: 'Outfit', sans-serif;
+            --font-heading: 'Space Grotesk', sans-serif;
+            --transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        /* Base Styles & Reset */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-light);
+            font-family: var(--font-main);
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+
+        ::-webkit-scrollbar-track {
+            background: var(--bg-darker);
+        }
+
+        ::-webkit-scrollbar-thumb {
+            background: rgba(168, 85, 247, 0.3);
+            border-radius: 10px;
+        }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: var(--primary);
+        }
+
+        /* Utility Layouts */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        .section-padding {
+            padding: 8rem 0;
+        }
+
+        /* Typography */
+        h1,
+        h2,
+        h3,
+        h4 {
+            font-family: var(--font-heading);
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        .gradient-text {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 50%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        /* Glassmorphism Common Style */
+        .glass-panel {
+            background: var(--bg-card);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid var(--border-glass);
+            border-radius: 1.25rem;
+            transition: var(--transition);
+        }
+
+        /* Background Animated Particles/Glows */
+        .glow-sphere {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(120px);
+            z-index: -1;
+            opacity: 0.35;
+            pointer-events: none;
+        }
+
+        .sphere-1 {
+            width: 450px;
+            height: 450px;
+            background: var(--primary);
+            top: -10%;
+            right: -10%;
+            animation: floatGlow 15s infinite alternate;
+        }
+
+        .sphere-2 {
+            width: 500px;
+            height: 500px;
+            background: var(--secondary);
+            bottom: 20%;
+            left: -15%;
+            animation: floatGlow 18s infinite alternate-reverse;
+        }
+
+        @keyframes floatGlow {
+            0% {
+                transform: translate(0, 0) scale(1);
+            }
+
+            100% {
+                transform: translate(50px, 80px) scale(1.15);
+            }
+        }
+
+        /* Nav Bar styling */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: var(--transition);
+            border-bottom: 1px solid transparent;
+        }
+
+        header.scrolled {
+            background: rgba(3, 5, 10, 0.8);
+            backdrop-filter: blur(16px);
+            border-color: var(--border-glass);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 5rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+            text-decoration: none;
+            color: var(--text-light);
+            font-family: var(--font-heading);
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+
+        .logo-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 2.5rem;
+            height: 2.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            border-radius: 0.75rem;
+            color: var(--text-light);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.4);
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 2.5rem;
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.95rem;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a:hover,
+        .nav-links a.active {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0%;
+            height: 2px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            transition: var(--transition);
+        }
+
+        .nav-links a:hover::after,
+        .nav-links a.active::after {
+            width: 100%;
+        }
+
+        .btn-join {
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.1) 0%, rgba(168, 85, 247, 0.1) 100%);
+            border: 1px solid var(--primary);
+            color: var(--primary);
+            padding: 0.6rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
+            font-size: 0.9rem;
+        }
+
+        .btn-join:hover {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: var(--bg-darker);
+            box-shadow: 0 0 25px rgba(0, 240, 255, 0.4);
+            transform: translateY(-2px);
+            border-color: transparent;
+        }
+
+        /* Mobile Menu */
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--text-light);
+            cursor: pointer;
+            outline: none;
+        }
+
+        /* Hero Section Styling */
+        .hero {
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            padding-top: 5rem;
+            background: radial-gradient(circle at 50% 50%, rgba(13, 19, 39, 0.3) 0%, var(--bg-darker) 100%);
+            overflow: hidden;
+        }
+
+        #hero-canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-tagline {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(0, 240, 255, 0.08);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            padding: 0.4rem 1.2rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--primary);
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            margin-bottom: 2.5rem;
+            max-width: 600px;
+        }
+
+        .hero-actions {
+            display: flex;
+            gap: 1.25rem;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            color: var(--bg-darker);
+            font-weight: 700;
+            padding: 1rem 2.25rem;
+            border-radius: 0.75rem;
+            text-decoration: none;
+            transition: var(--transition);
+            box-shadow: 0 4px 20px rgba(0, 240, 255, 0.25);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 240, 255, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--text-light);
+            font-weight: 600;
+            padding: 1rem 2.25rem;
+            border-radius: 0.75rem;
+            text-decoration: none;
+            transition: var(--transition);
+            border: 1px solid var(--border-glass);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.05);
+            border-color: var(--text-muted);
+            transform: translateY(-3px);
+        }
+
+        .hero-visual {
+            position: relative;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .hero-visual::before {
+            content: '';
+            position: absolute;
+            width: 110%;
+            height: 110%;
+            background: radial-gradient(circle, rgba(168, 85, 247, 0.15) 0%, transparent 70%);
+            z-index: 1;
+        }
+
+        .futuristic-card {
+            width: 100%;
+            max-width: 400px;
+            aspect-ratio: 1;
+            border-radius: 2rem;
+            background: linear-gradient(135deg, rgba(13, 19, 39, 0.7) 0%, rgba(3, 5, 10, 0.9) 100%);
+            border: 1px solid var(--border-glass);
+            box-shadow: 0 30px 60px rgba(0, 0, 0, 0.4);
+            padding: 2.5rem;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            z-index: 2;
+            overflow: hidden;
+            animation: floatCard 6s ease-in-out infinite;
+        }
+
+        @keyframes floatCard {
+
+            0%,
+            100% {
+                transform: translateY(0) rotate(0deg);
+            }
+
+            50% {
+                transform: translateY(-15px) rotate(1deg);
+            }
+        }
+
+        .card-top {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .chip {
+            width: 48px;
+            height: 38px;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 8px;
+            position: relative;
+        }
+
+        .chip::after {
+            content: '';
+            position: absolute;
+            top: 20%;
+            left: 20%;
+            width: 60%;
+            height: 60%;
+            border: 1px solid rgba(0, 240, 255, 0.3);
+            border-radius: 4px;
+        }
+
+        .card-code {
+            font-family: 'Courier New', Courier, monospace;
+            font-size: 0.85rem;
+            color: var(--primary);
+            background: rgba(0, 0, 0, 0.3);
+            padding: 1rem;
+            border-radius: 0.75rem;
+            margin: 1.5rem 0;
+            border-left: 3px solid var(--secondary);
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .card-stats {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid var(--border-glass);
+            padding-top: 1.5rem;
+        }
+
+        .stat-item h4 {
+            font-size: 1.5rem;
+            color: var(--text-light);
+        }
+
+        .stat-item p {
+            font-size: 0.75rem;
+            color: var(--text-muted);
+            text-transform: uppercase;
+        }
+
+        /* About Section (Visi Misi) */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 5rem;
+            align-items: center;
+        }
+
+        .about-visual {
+            position: relative;
+        }
+
+        .about-img-container {
+            border-radius: 1.5rem;
+            overflow: hidden;
+            border: 1px solid var(--border-glass);
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+        }
+
+        .about-img-container img {
+            width: 100%;
+            height: auto;
+            display: block;
+            transition: var(--transition);
+            filter: grayscale(20%) contrast(110%);
+        }
+
+        .about-img-container:hover img {
+            transform: scale(1.05);
+            filter: grayscale(0%) contrast(100%);
+        }
+
+        .about-tag {
+            position: absolute;
+            bottom: 1.5rem;
+            right: 1.5rem;
+            background: rgba(3, 5, 10, 0.85);
+            backdrop-filter: blur(8px);
+            padding: 0.75rem 1.5rem;
+            border-radius: 1rem;
+            border: 1px solid var(--border-glass);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .about-header h2 {
+            font-size: 2.75rem;
+            line-height: 1.2;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-bottom: 3rem;
+        }
+
+        /* Visi Misi Tab-like layout */
+        .vm-tabs {
+            display: flex;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid var(--border-glass);
+            padding-bottom: 1rem;
+        }
+
+        .vm-tab-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            font-family: var(--font-heading);
+            font-size: 1.25rem;
+            font-weight: 600;
+            cursor: pointer;
+            padding: 0.5rem 1rem;
+            transition: var(--transition);
+            position: relative;
+        }
+
+        .vm-tab-btn.active {
+            color: var(--primary);
+        }
+
+        .vm-tab-btn::after {
+            content: '';
+            position: absolute;
+            bottom: -1rem;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--primary);
+            transition: var(--transition);
+        }
+
+        .vm-tab-btn.active::after {
+            width: 100%;
+        }
+
+        .vm-content {
+            display: none;
+            animation: fadeIn 0.5s ease;
+        }
+
+        .vm-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .misi-list {
+            list-style: none;
+            display: grid;
+            gap: 1.25rem;
+        }
+
+        .misi-item {
+            display: flex;
+            gap: 1rem;
+            align-items: flex-start;
+        }
+
+        .misi-icon {
+            background: rgba(168, 85, 247, 0.15);
+            border: 1px solid rgba(168, 85, 247, 0.3);
+            color: var(--secondary);
+            width: 2rem;
+            height: 2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            flex-shrink: 0;
+        }
+
+        /* Divisi (Departments) Section */
+        .section-header {
+            text-align: center;
+            max-width: 700px;
+            margin: 0 auto 5rem auto;
+        }
+
+        .section-header p {
+            color: var(--text-muted);
+            font-size: 1.1rem;
+            margin-top: 1rem;
+        }
+
+        .divisi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .divisi-card {
+            padding: 2.5rem;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .divisi-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background: linear-gradient(90deg, var(--primary), var(--secondary));
+            opacity: 0;
+            transition: var(--transition);
+        }
+
+        .divisi-card:hover {
+            transform: translateY(-8px);
+            background: var(--bg-card-hover);
+            border-color: var(--border-active);
+            box-shadow: 0 15px 40px rgba(0, 240, 255, 0.08);
+        }
+
+        .divisi-card:hover::before {
+            opacity: 1;
+        }
+
+        .divisi-top {
+            margin-bottom: 2rem;
+        }
+
+        .divisi-icon-container {
+            width: 3.5rem;
+            height: 3.5rem;
+            background: rgba(0, 240, 255, 0.08);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            color: var(--primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 1rem;
+            margin-bottom: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .divisi-card:hover .divisi-icon-container {
+            background: var(--primary);
+            color: var(--bg-darker);
+            box-shadow: 0 0 20px rgba(0, 240, 255, 0.4);
+        }
+
+        .divisi-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .divisi-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .divisi-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 1.5rem;
+        }
+
+        .divisi-tag {
+            font-size: 0.75rem;
+            background: rgba(255, 255, 255, 0.04);
+            border: 1px solid var(--border-glass);
+            padding: 0.25rem 0.75rem;
+            border-radius: 50px;
+            color: var(--text-muted);
+        }
+
+        /* Programs (Proker) Section */
+        .programs-timeline {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+
+        .programs-timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            transform: translateX(-50%);
+            top: 0;
+            width: 2px;
+            height: 100%;
+            background: linear-gradient(180deg, var(--primary) 0%, var(--secondary) 50%, var(--bg-darker) 100%);
+        }
+
+        .timeline-item {
+            display: flex;
+            justify-content: flex-end;
+            padding: 2.5rem 0;
+            width: 50%;
+            position: relative;
+        }
+
+        .timeline-item:nth-child(even) {
+            align-self: flex-end;
+            justify-content: flex-start;
+            margin-left: 50%;
+        }
+
+        .timeline-item:nth-child(odd) {
+            margin-right: 50%;
+        }
+
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            right: -6px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            background: var(--bg-dark);
+            border: 2px solid var(--primary);
+            border-radius: 50%;
+            z-index: 5;
+            box-shadow: 0 0 10px var(--primary);
+        }
+
+        .timeline-item:nth-child(even)::after {
+            left: -6px;
+            border-color: var(--secondary);
+            box-shadow: 0 0 10px var(--secondary);
+        }
+
+        .timeline-card {
+            width: 90%;
+            padding: 2rem;
+        }
+
+        .timeline-item:nth-child(even) .timeline-card {
+            margin-left: 10%;
+        }
+
+        .timeline-date {
+            font-size: 0.85rem;
+            font-weight: 700;
+            color: var(--primary);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 0.5rem;
+        }
+
+        .timeline-item:nth-child(even) .timeline-date {
+            color: var(--secondary);
+        }
+
+        .timeline-card h3 {
+            margin-bottom: 0.75rem;
+            font-size: 1.35rem;
+        }
+
+        .timeline-card p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Stats & Achievements Highlight */
+        .stats-banner {
+            background: linear-gradient(135deg, rgba(0, 240, 255, 0.05) 0%, rgba(168, 85, 247, 0.05) 100%);
+            border-top: 1px solid var(--border-glass);
+            border-bottom: 1px solid var(--border-glass);
+            padding: 5rem 0;
+        }
+
+        .stats-flex {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 3rem;
+        }
+
+        .stat-banner-item {
+            text-align: center;
+        }
+
+        .stat-banner-item h2 {
+            font-size: 3.5rem;
+            margin-bottom: 0.5rem;
+            font-family: var(--font-heading);
+        }
+
+        .stat-banner-item p {
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            font-size: 0.85rem;
+        }
+
+        /* Contact Section */
+        .contact-grid {
+            display: grid;
+            grid-template-columns: 0.8fr 1.2fr;
+            gap: 4rem;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2rem;
+        }
+
+        .contact-method {
+            display: flex;
+            gap: 1.25rem;
+            align-items: flex-start;
+        }
+
+        .contact-icon {
+            width: 3rem;
+            height: 3rem;
+            background: rgba(0, 240, 255, 0.08);
+            border: 1px solid rgba(0, 240, 255, 0.2);
+            color: var(--primary);
+            border-radius: 0.75rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .contact-details h4 {
+            font-size: 1.1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .contact-details p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        .contact-form {
+            padding: 3rem;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group-full {
+            grid-column: span 2;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--text-muted);
+        }
+
+        .form-control {
+            background: rgba(3, 5, 10, 0.6);
+            border: 1px solid var(--border-glass);
+            padding: 0.85rem 1.25rem;
+            border-radius: 0.75rem;
+            color: var(--text-light);
+            font-family: var(--font-main);
+            transition: var(--transition);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--primary);
+            box-shadow: 0 0 15px rgba(0, 240, 255, 0.15);
+        }
+
+        textarea.form-control {
+            resize: none;
+            height: 120px;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--bg-darker);
+            border-top: 1px solid var(--border-glass);
+            padding: 5rem 0 2rem 0;
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 1.5fr 1fr 1fr;
+            gap: 4rem;
+            margin-bottom: 4rem;
+        }
+
+        .footer-logo-desc {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+
+        .footer-logo-desc p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+            max-width: 320px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 1rem;
+        }
+
+        .social-btn {
+            width: 2.5rem;
+            height: 2.5rem;
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid var(--border-glass);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--text-muted);
+            transition: var(--transition);
+            text-decoration: none;
+        }
+
+        .social-btn:hover {
+            color: var(--primary);
+            border-color: var(--primary);
+            background: rgba(0, 240, 255, 0.05);
+            transform: translateY(-3px);
+        }
+
+        .footer-links-col h4 {
+            font-size: 1.1rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+        }
+
+        .footer-links-col h4::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -0.5rem;
+            width: 2rem;
+            height: 2px;
+            background: var(--primary);
+        }
+
+        .footer-links-col ul {
+            list-style: none;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .footer-links-col a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+            font-size: 0.95rem;
+        }
+
+        .footer-links-col a:hover {
+            color: var(--primary);
+            padding-left: 0.5rem;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid var(--border-glass);
+            padding-top: 2rem;
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* Responsive Breakpoints */
+        @media (max-width: 1024px) {
+            .hero-grid {
+                grid-template-columns: 1fr;
+                gap: 5rem;
+                text-align: center;
+            }
+
+            .hero h1 {
+                font-size: 3.25rem;
+            }
+
+            .hero p {
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .hero-actions {
+                justify-content: center;
+            }
+
+            .hero-visual {
+                order: -1;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+
+            .contact-grid {
+                grid-template-columns: 1fr;
+                gap: 4rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .section-padding {
+                padding: 5rem 0;
+            }
+
+            .mobile-toggle {
+                display: block;
+            }
+
+            .nav-links {
+                position: fixed;
+                top: 5rem;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 5rem);
+                background: var(--bg-darker);
+                flex-direction: column;
+                align-items: center;
+                justify-content: center;
+                gap: 2.5rem;
+                transition: var(--transition);
+                z-index: 999;
+            }
+
+            .nav-links.active {
+                left: 0;
+            }
+
+            .btn-join {
+                display: none;
+                /* simple mobile simplification */
+            }
+
+            .programs-timeline::before {
+                left: 0;
+            }
+
+            .timeline-item {
+                width: 100%;
+                justify-content: flex-start;
+                padding-left: 2rem;
+            }
+
+            .timeline-item:nth-child(even) {
+                margin-left: 0;
+            }
+
+            .timeline-item:nth-child(odd) {
+                margin-right: 0;
+            }
+
+            .timeline-item::after {
+                left: -6px;
+            }
+
+            .timeline-item:nth-child(even)::after {
+                left: -6px;
+            }
+
+            .timeline-card {
+                width: 100%;
+            }
+
+            .form-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .form-group-full {
+                grid-column: span 1;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Glowing Orbs (Futuristic background layers) -->
+    <div class="glow-sphere sphere-1"></div>
+    <div class="glow-sphere sphere-2"></div>
+
+    <!-- Navigation Header -->
+    <header id="header">
+        <div class="container nav-container">
+            <a href="#" class="logo">
+                <div class="logo-icon">
+                    <i data-lucide="terminal"></i>
+                </div>
+                <span>HIMAFOR</span>
+            </a>
+
+            <ul class="nav-links" id="nav-menu">
+                <li><a href="#beranda" class="active">Beranda</a></li>
+                <li><a href="#tentang">Tentang</a></li>
+                <li><a href="#divisi">Divisi</a></li>
+                <li><a href="#proker">Program</a></li>
+                <li><a href="#kontak">Kontak</a></li>
+            </ul>
+
+            <a href="#kontak" class="btn-join">Hubungi Kami</a>
+
+            <button class="mobile-toggle" id="menu-btn">
+                <i data-lucide="menu" id="menu-icon"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="beranda">
+        <!-- Interactive Canvas for background node particles -->
+        <canvas id="hero-canvas"></canvas>
+
+        <div class="container">
+            <div class="hero-grid">
+                <div class="hero-text">
+                    <div class="hero-tagline">
+                        <i data-lucide="sparkles" style="width: 1rem; height: 1rem;"></i>
+                        <span>Future Ready Student Community</span>
+                    </div>
+                    <h1>
+                        Menembus Batas <span class="gradient-text">Teknologi</span>, Menginspirasi <span
+                            class="gradient-text">Masa Depan</span>
+                    </h1>
+                    <p>
+                        Himpunan Mahasiswa Informatika Visioner. Wadah kolaborasi progresif untuk melahirkan innovator
+                        digital, memperkuat riset, dan menciptakan dampak global.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#tentang" class="btn-primary">
+                            Eksplorasi Visi
+                            <i data-lucide="arrow-right"></i>
+                        </a>
+                        <a href="#proker" class="btn-secondary">
+                            Program Kami
+                        </a>
+                    </div>
+                </div>
+
+                <div class="hero-visual">
+                    <div class="futuristic-card">
+                        <div class="card-top">
+                            <div class="chip"></div>
+                            <div class="gradient-text" style="font-weight: 800; font-family: var(--font-heading);">
+                                HIMAFOR ID</div>
+                        </div>
+                        <div class="card-code" id="animated-code">
+                            // Visionary Future Ready...
+                        </div>
+                        <div class="card-stats">
+                            <div class="stat-item">
+                                <h4>800+</h4>
+                                <p>Mahasiswa</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>12+</h4>
+                                <p>Partner Industri</p>
+                            </div>
+                            <div class="stat-item">
+                                <h4>45+</h4>
+                                <p>Proyek Ristek</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Highlight Section -->
+    <section class="stats-banner">
+        <div class="container">
+            <div class="stats-flex">
+                <div class="stat-banner-item">
+                    <h2 class="gradient-text">100%</h2>
+                    <p>Sinergi Kolaboratif</p>
+                </div>
+                <div class="stat-banner-item">
+                    <h2 class="gradient-text">15+</h2>
+                    <p>Riset & Publikasi</p>
+                </div>
+                <div class="stat-banner-item">
+                    <h2 class="gradient-text">30+</h2>
+                    <p>Penghargaan Nasional</p>
+                </div>
+                <div class="stat-banner-item">
+                    <h2 class="gradient-text">5000+</h2>
+                    <p>Baris Kode Produktif</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section class="section-padding" id="tentang">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-visual">
+                    <div class="about-img-container">
+                        <!-- High Quality Futuristic Tech Student Image from CDN -->
+                        <img src="https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=600"
+                            alt="HIMAFOR Collaboration Lab">
+                    </div>
+                    <div class="about-tag">
+                        <i data-lucide="award" class="gradient-text" style="width: 1.5rem; height: 1.5rem;"></i>
+                        <div>
+                            <p style="font-size: 0.85rem; font-weight: 700;">Organisasi Terbaik</p>
+                            <p style="font-size: 0.7rem; color: var(--text-muted);">Inovasi & Teknologi 2025</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="about-content">
+                    <div class="about-header">
+                        <h2>Membangun <span class="gradient-text">Ekosistem</span> Teknologi yang Berkelanjutan</h2>
+                        <p>HIMAFOR berkomitmen tidak hanya mendidik melainkan menginspirasi mahasiswa Informatika untuk
+                            menguasai teknologi termutakhir melalui eksplorasi tiada batas.</p>
+                    </div>
+
+                    <div class="vm-tabs">
+                        <button class="vm-tab-btn active" onclick="switchTab('visi')">Visi</button>
+                        <button class="vm-tab-btn" onclick="switchTab('misi')">Misi</button>
+                    </div>
+
+                    <div id="tab-visi" class="vm-content active">
+                        <p
+                            style="font-size: 1.2rem; color: var(--text-light); border-left: 4px solid var(--primary); padding-left: 1.5rem; line-height: 1.8;">
+                            "Menjadi pusat akselerasi talenta teknologi informatika yang unggul, berkarakter adaptif,
+                            kreatif, serta visioner dalam mempelopori riset untuk pengabdian sosial global."
+                        </p>
+                    </div>
+
+                    <div id="tab-misi" class="vm-content">
+                        <ul class="misi-list">
+                            <li class="misi-item">
+                                <div class="misi-icon"><i data-lucide="cpu" style="width: 1rem; height: 1rem;"></i>
+                                </div>
+                                <div>
+                                    <h4 style="color: var(--primary);">Riset & Eksplorasi Inovatif</h4>
+                                    <p style="color: var(--text-muted); font-size: 0.95rem;">Menyelenggarakan inkubasi
+                                        berbasis Artificial Intelligence, Blockchain, dan Web3 Engineering secara
+                                        aplikatif.</p>
+                                </div>
+                            </li>
+                            <li class="misi-item">
+                                <div class="misi-icon"><i data-lucide="users" style="width: 1rem; height: 1rem;"></i>
+                                </div>
+                                <div>
+                                    <h4 style="color: var(--primary);">Kolaborasi Multi-Sektor</h4>
+                                    <p style="color: var(--text-muted); font-size: 0.95rem;">Menghubungkan akademisi,
+                                        alumni, dan industri teknologi multinasional guna menyelaraskan kurikulum
+                                        non-formal.</p>
+                                </div>
+                            </li>
+                            <li class="misi-item">
+                                <div class="misi-icon"><i data-lucide="globe" style="width: 1rem; height: 1rem;"></i>
+                                </div>
+                                <div>
+                                    <h4 style="color: var(--primary);">Aksi Sosial Digital</h4>
+                                    <p style="color: var(--text-muted); font-size: 0.95rem;">Menerapkan solusi komputasi
+                                        berbasis masyarakat untuk digitalisasi UMKM dan akses edukasi pedesaan.</p>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Divisi / Departments Section -->
+    <section class="section-padding" id="divisi"
+        style="background: linear-gradient(180deg, var(--bg-dark) 0%, var(--bg-darker) 100%);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Pilar <span class="gradient-text">Departemen</span> Kami</h2>
+                <p>Didukung oleh divisi-divisi strategis yang saling bersinergi demi merealisasikan visi digital global.
+                </p>
+            </div>
+
+            <div class="divisi-grid">
+                <!-- Ristek Card -->
+                <div class="glass-panel divisi-card">
+                    <div class="divisi-top">
+                        <div class="divisi-icon-container">
+                            <i data-lucide="code-2"></i>
+                        </div>
+                        <h3>Riset & Teknologi</h3>
+                        <p>Jantung eksplorasi inovasi, riset, dan rekayasa perangkat lunak. Menggerakkan komunitas
+                            tech-stack terbaru.</p>
+                    </div>
+                    <div class="divisi-tags">
+                        <span class="divisi-tag">AI / Machine Learning</span>
+                        <span class="divisi-tag">Full-Stack Dev</span>
+                        <span class="divisi-tag">Cyber Security</span>
+                    </div>
+                </div>
+
+                <!-- PSDM Card -->
+                <div class="glass-panel divisi-card">
+                    <div class="divisi-top">
+                        <div class="divisi-icon-container">
+                            <i data-lucide="user-check"></i>
+                        </div>
+                        <h3>Pengembangan SDM</h3>
+                        <p>Fokus pada pertumbuhan intelektual, karakter, soft-skills, dan penanaman kepemimpinan yang
+                            berintegritas.</p>
+                    </div>
+                    <div class="divisi-tags">
+                        <span class="divisi-tag">Leadership Bootcamp</span>
+                        <span class="divisi-tag">Mentoring</span>
+                        <span class="divisi-tag">Growth Mindset</span>
+                    </div>
+                </div>
+
+                <!-- Medinfo Card -->
+                <div class="glass-panel divisi-card">
+                    <div class="divisi-top">
+                        <div class="divisi-icon-container">
+                            <i data-lucide="palette"></i>
+                        </div>
+                        <h3>Media & Informasi</h3>
+                        <p>Menyajikan kreasi branding visual, publikasi terarah, informasi taktis, serta perancangan
+                            visual organisasi.</p>
+                    </div>
+                    <div class="divisi-tags">
+                        <span class="divisi-tag">UI/UX Design</span>
+                        <span class="divisi-tag">Content Creation</span>
+                        <span class="divisi-tag">Video Production</span>
+                    </div>
+                </div>
+
+                <!-- Humas Card -->
+                <div class="glass-panel divisi-card">
+                    <div class="divisi-top">
+                        <div class="divisi-icon-container">
+                            <i data-lucide="network"></i>
+                        </div>
+                        <h3>Hubungan Masyarakat</h3>
+                        <p>Membangun jembatan komunikasi, kemitraan strategis eksternal, dan merawat hubungan
+                            berkesinambungan.</p>
+                    </div>
+                    <div class="divisi-tags">
+                        <span class="divisi-tag">Industrial Relations</span>
+                        <span class="divisi-tag">Public Affairs</span>
+                        <span class="divisi-tag">Sponsorship</span>
+                    </div>
+                </div>
+
+                <!-- Mikad Card -->
+                <div class="glass-panel divisi-card">
+                    <div class="divisi-top">
+                        <div class="divisi-icon-container">
+                            <i data-lucide="gamepad-2"></i>
+                        </div>
+                        <h3>Minat & Bakat</h3>
+                        <p>Mengakomodasi bakat non-akademik anggota di bidang esport, seni kreatif, dan inovasi visual
+                            modern.</p>
+                    </div>
+                    <div class="divisi-tags">
+                        <span class="divisi-tag">Competitive Coding</span>
+                        <span class="divisi-tag">E-Sport Division</span>
+                        <span class="divisi-tag">Creative Workshop</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Programs Timeline Section -->
+    <section class="section-padding" id="proker">
+        <div class="container">
+            <div class="section-header">
+                <h2>Program <span class="gradient-text">Eksklusif</span> Kami</h2>
+                <p>Eksplorasi jajaran program kerja terencana yang dirancang untuk akselerasi karir dan kemampuan
+                    global.</p>
+            </div>
+
+            <div class="programs-timeline">
+                <div class="timeline-item">
+                    <div class="glass-panel timeline-card">
+                        <div class="timeline-date">Juni 2026</div>
+                        <h3>HIMAFOR Tech Summit</h3>
+                        <p>Seminar akbar tingkat nasional yang mendatangkan pakar ternama dari tech giants dunia untuk
+                            membahas tren AI terapan dan Web3.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="glass-panel timeline-card">
+                        <div class="timeline-date">Agustus 2026</div>
+                        <h3>HIMA-Hackfest</h3>
+                        <p>Ajang Hackathon bergengsi 48 jam nonstop untuk menantang kreativitas mahasiswa dalam
+                            menciptakan solusi teknologi berkelanjutan.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="glass-panel timeline-card">
+                        <div class="timeline-date">Oktober 2026</div>
+                        <h3>Informatics Youth Camp</h3>
+                        <p>Bootcamp intensif pengembangan kepemimpinan dan eksplorasi advanced coding guna mempersiapkan
+                            generasi andalan Himpunan berikutnya.</p>
+                    </div>
+                </div>
+
+                <div class="timeline-item">
+                    <div class="glass-panel timeline-card">
+                        <div class="timeline-date">Desember 2026</div>
+                        <h3>DevDay Exhibition</h3>
+                        <p>Pameran dan panggung presentasi bagi karya terbaik mahasiswa, dipertemukan langsung dengan
+                            investor dan inkubator startup.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="section-padding" id="kontak"
+        style="background: radial-gradient(circle at 10% 90%, rgba(168, 85, 247, 0.08) 0%, var(--bg-darker) 100%);">
+        <div class="container">
+            <div class="section-header">
+                <h2>Mulai <span class="gradient-text">Kolaborasi</span> Visioner</h2>
+                <p>Mari bergabung bersama kami membangun masa depan digital. Sampaikan aspirasimu atau tawarkan jalinan
+                    kerja sama.</p>
+            </div>
+
+            <div class="contact-grid">
+                <div class="contact-info">
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i data-lucide="mail"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Email Resmi</h4>
+                            <p>contact@himafor.org</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i data-lucide="map-pin"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Sekretariat</h4>
+                            <p>Gedung C, Kampus Terpadu Informatika, Indonesia</p>
+                        </div>
+                    </div>
+
+                    <div class="contact-method">
+                        <div class="contact-icon">
+                            <i data-lucide="phone"></i>
+                        </div>
+                        <div class="contact-details">
+                            <h4>Hubungi Kami</h4>
+                            <p>+62 812-3456-7890 (Humas)</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="glass-panel contact-form">
+                    <form onsubmit="handleSubmit(event)">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label for="name">Nama Lengkap</label>
+                                <input type="text" id="name" class="form-control" placeholder="Nama Anda" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="email">Alamat Email</label>
+                                <input type="email" id="email" class="form-control" placeholder="email@domain.com"
+                                    required>
+                            </div>
+                            <div class="form-group form-group-full">
+                                <label for="subject">Subjek / Perihal</label>
+                                <input type="text" id="subject" class="form-control"
+                                    placeholder="Kolaborasi / Pertanyaan" required>
+                            </div>
+                            <div class="form-group form-group-full">
+                                <label for="message">Pesan Anda</label>
+                                <textarea id="message" class="form-control"
+                                    placeholder="Tuliskan pesan atau ide kolaborasimu disini..." required></textarea>
+                            </div>
+                        </div>
+                        <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+                            Kirim Pesan Visioner
+                            <i data-lucide="send"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-logo-desc">
+                    <a href="#" class="logo">
+                        <div class="logo-icon">
+                            <i data-lucide="terminal"></i>
+                        </div>
+                        <span>HIMAFOR</span>
+                    </a>
+                    <p>Membentuk pemimpin teknologi masa depan yang tidak hanya kompeten secara teknis, namun berjiwa
+                        kemanusiaan dan adaptif global.</p>
+                    <div class="social-links">
+                        <a href="#" class="social-btn"><i data-lucide="instagram"></i></a>
+                        <a href="#" class="social-btn"><i data-lucide="github"></i></a>
+                        <a href="#" class="social-btn"><i data-lucide="linkedin"></i></a>
+                        <a href="#" class="social-btn"><i data-lucide="youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4>Navigasi</h4>
+                    <ul>
+                        <li><a href="#beranda">Beranda</a></li>
+                        <li><a href="#tentang">Tentang Kami</a></li>
+                        <li><a href="#divisi">Divisi</a></li>
+                        <li><a href="#proker">Program Kerja</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-links-col">
+                    <h4>Pintasan Hubungan</h4>
+                    <ul>
+                        <li><a href="#kontak">Kemitraan Industri</a></li>
+                        <li><a href="#kontak">Kunjungan Perusahaan</a></li>
+                        <li><a href="#kontak">Hubungan Alumni</a></li>
+                        <li><a href="#kontak">FAQ</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="footer-bottom">
+                <p>&copy; 2026 HIMAFOR (Himpunan Mahasiswa Informatika). All Rights Reserved. Engineered with Passion
+                    for the Future.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Interactive Scripts -->
+    <script>
+        // Initialize Lucide Icons
+        lucide.createIcons();
+
+        // Header Background Scroll Transition
+        const header = document.getElementById('header');
+        const sections = document.querySelectorAll('section');
+        const navLinks = document.querySelectorAll('.nav-links a');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+
+            // Highlighting active nav links based on scrolling section
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                const sectionHeight = section.clientHeight;
+                if (pageYOffset >= (sectionTop - 200)) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href').includes(current)) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // Mobile Menu Toggle
+        const menuBtn = document.getElementById('menu-btn');
+        const navMenu = document.getElementById('nav-menu');
+        const menuIcon = document.getElementById('menu-icon');
+
+        menuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const isActive = navMenu.classList.contains('active');
+            menuIcon.setAttribute('data-lucide', isActive ? 'x' : 'menu');
+            lucide.createIcons(); // re-init icons for dynamic change
+        });
+
+        // Close Mobile Menu on link click
+        navLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                menuIcon.setAttribute('data-lucide', 'menu');
+                lucide.createIcons();
+            });
+        });
+
+        // Tabs Toggle Logic for Visi Misi
+        function switchTab(tabId) {
+            // Remove active from all tabs and contents
+            document.querySelectorAll('.vm-tab-btn').forEach(btn => btn.classList.remove('active'));
+            document.querySelectorAll('.vm-content').forEach(content => content.classList.remove('active'));
+
+            // Find current event trigger and set active
+            const currentBtn = Array.from(document.querySelectorAll('.vm-tab-btn')).find(btn => btn.textContent.toLowerCase() === tabId);
+            if (currentBtn) currentBtn.classList.add('active');
+
+            document.getElementById(`tab-${tabId}`).classList.add('active');
+        }
+
+        // Form Submit Handler
+        function handleSubmit(event) {
+            event.preventDefault();
+            alert('Terima kasih atas pesan visioner Anda! Tim Humas HIMAFOR akan segera menghubungi Anda kembali.');
+            event.target.reset();
+        }
+
+        // --- Custom Particle Network Animation (Canvas background for Hero Section) ---
+        const canvas = document.getElementById('hero-canvas');
+        const ctx = canvas.getContext('2d');
+
+        let particles = [];
+        const particleCount = 65;
+
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 2 + 1;
+                this.speedX = Math.random() * 0.6 - 0.3;
+                this.speedY = Math.random() * 0.6 - 0.3;
+                this.color = Math.random() > 0.5 ? '#00f0ff' : '#a855f7';
+            }
+
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+
+                if (this.x > canvas.width || this.x < 0) this.speedX *= -1;
+                if (this.y > canvas.height || this.y < 0) this.speedY *= -1;
+            }
+
+            draw() {
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fillStyle = this.color;
+                ctx.shadowBlur = 8;
+                ctx.shadowColor = this.color;
+                ctx.fill();
+                ctx.shadowBlur = 0; // reset shadow
+            }
+        }
+
+        function initParticles() {
+            canvas.width = canvas.parentElement.offsetWidth;
+            canvas.height = canvas.parentElement.offsetHeight;
+            particles = [];
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+            // Draw connections
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const distance = Math.sqrt(dx * dx + dy * dy);
+
+                    if (distance < 110) {
+                        ctx.beginPath();
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.strokeStyle = `rgba(0, 240, 255, ${0.15 - (distance / 110) * 0.15})`;
+                        ctx.lineWidth = 0.8;
+                        ctx.stroke();
+                    }
+                }
+            }
+
+            particles.forEach(p => {
+                p.update();
+                p.draw();
+            });
+
+            requestAnimationFrame(animateParticles);
+        }
+
+        window.addEventListener('resize', initParticles);
+        initParticles();
+        animateParticles();
+
+        // Typing Code effect on Hero section Card
+        const codeText = [
+            "const himafor = {",
+            "  vision: 'Future Innovation',",
+            "  stack: ['AI', 'Web3', 'Cloud'],",
+            "  readyToLead: true",
+            "};",
+            "console.log('Shaping tomorrow');"
+        ];
+
+        let lineIdx = 0;
+        let charIdx = 0;
+        const codeContainer = document.getElementById('animated-code');
+        codeContainer.innerHTML = '';
+
+        function typeCode() {
+            if (lineIdx < codeText.length) {
+                if (charIdx === 0) {
+                    const newLine = document.createElement('div');
+                    newLine.classList.add('code-line');
+                    codeContainer.appendChild(newLine);
+                }
+                const lines = codeContainer.querySelectorAll('div');
+                const currentLine = lines[lines.length - 1];
+                currentLine.textContent += codeText[lineIdx][charIdx];
+                charIdx++;
+
+                if (charIdx >= codeText[lineIdx].length) {
+                    lineIdx++;
+                    charIdx = 0;
+                    setTimeout(typeCode, 400);
+                } else {
+                    setTimeout(typeCode, 50);
+                }
+            } else {
+                // reset typing after some time
+                setTimeout(() => {
+                    codeContainer.innerHTML = '';
+                    lineIdx = 0;
+                    charIdx = 0;
+                    typeCode();
+                }, 8000);
+            }
+        }
+
+        setTimeout(typeCode, 1000);
+    </script>
+</body>
+
+</html>
