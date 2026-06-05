@@ -17,9 +17,8 @@ export default function Navbar() {
             href="/"
             className="text-xl font-bold text-primary-900 tracking-tight"
           >
-            Konfigura Group
+            Abdul Kharis 2388010004
           </Link>
-          #ini dirubah jadi hidden md:flex karena di mobile ga muncul, cuma muncul di desktop
 
           <nav className="hidden md:flex items-center gap-8">
             {links.map((item) => (
