@@ -17,7 +17,7 @@ export default function Navbar() {
             href="/"
             className="text-xl font-bold text-primary-900 tracking-tight"
           >
-            Konfigura Group
+            ABdul Kharis -2388010004
           </Link>
 
           <nav className="hidden md:flex items-center gap-8">
