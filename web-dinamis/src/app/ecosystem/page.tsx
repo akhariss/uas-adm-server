@@ -1,15 +1,38 @@
-import { query } from "@/lib/db";
+import Link from "next/link";
+import Image from "next/image";
 
-type EcosystemItem = {
-  name: string;
-  description: string;
-  image: string;
-};
+const cards = [
+  {
+    title: "Konfigura Tech",
+    description:
+      "Solusi digital yang mengintegrasikan teknologi modern untuk mendorong efisiensi bisnis dan transformasi digital.",
+    image: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80",
+    href: "/ecosystems/tech",
+  },
+  {
+    title: "Konfigura Farm",
+    description:
+      "Pengembangan pertanian dan peternakan berkelanjutan dengan pendekatan modern untuk ketahanan pangan.",
+    image: "https://images.unsplash.com/photo-1500937386664-56d1dfef3854?w=800&q=80",
+    href: "/ecosystems/farm",
+  },
+  {
+    title: "Konfigura Institute",
+    description:
+      "Pendidikan dan pelatihan berbasis karya nyata untuk membekali generasi masa depan.",
+    image: "https://images.unsplash.com/photo-1524178232363-1fb2b075b655?w=800&q=80",
+    href: "/ecosystems/institute",
+  },
+  {
+    title: "Konfigura Foundation",
+    description:
+      "Program pemberdayaan sosial yang berkelanjutan dan berdampak langsung pada masyarakat.",
+    image: "https://images.unsplash.com/photo-1559027615-cd4628902d4a?w=800&q=80",
+    href: "/ecosystems/foundation",
+  },
+];
 
-export default async function EcosystemPage() {
-  const items = await query<EcosystemItem>(
-    "SELECT name, description, image FROM ecosystems ORDER BY id ASC"
-  );
+export default function EcosystemPage() {
 
   return (
     <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
