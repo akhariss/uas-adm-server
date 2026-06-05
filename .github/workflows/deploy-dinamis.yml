@@ -1,7 +1,7 @@
 name: Deploy Web Dinamis to AWS EC2
 on:
   push:
-    branches: [ main ]
+    branches: [ main, my-branch ]
     paths: 
     - 'web-dinamis/**'
     - '.github/workflows/deploy-dinamis.yml'
